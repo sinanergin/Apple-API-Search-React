@@ -26,22 +26,13 @@ export default function Search() {
 
   return (
     <Container component='main' maxWidth='lg' sx={{ mb: 4 }}>
-      {/* <Box
-        sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      > */}
-      <Grid container spacing={2}>
-        <Grid item xs={6} md={12}>
-          <Typography component='h1' variant='h4' align='center'>
-            iTunes music library search
-          </Typography>
-        </Grid>
-        <form onSubmit={handleSubmit}>
-          <Grid item xs={6} md={8}>
+      <Typography component='h1' variant='h4' align='center'>
+        iTunes music library search
+      </Typography>
+
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={8} md={8}>
             <TextField
               id='standard-search'
               label='Please enter song, album, singer name... '
@@ -50,9 +41,10 @@ export default function Search() {
               color='primary'
               focused
               name='queryValue'
+              fullWidth
             />
           </Grid>
-          <Grid xs={6} md={4}>
+          <Grid item xs={4} md={4}>
             <Button
               type='submit'
               variant='contained'
@@ -62,9 +54,8 @@ export default function Search() {
               Search
             </Button>
           </Grid>
-        </form>
-      </Grid>
-      {/* </Box> */}
+        </Grid>
+      </form>
     </Container>
   );
 }

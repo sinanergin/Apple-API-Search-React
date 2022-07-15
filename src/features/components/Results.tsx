@@ -3,6 +3,10 @@ import { searchActions } from '../helpers/slice';
 import Album from './Album';
 import Artist from './Artist';
 import Song from './Song';
+import Box from '@mui/system/Box';
+import Grid from '@mui/system/Unstable_Grid';
+import styled from '@mui/system/styled';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function Results(params: any) {
   const queryResults = useSelector((state: any) => state.items);

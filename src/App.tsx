@@ -26,7 +26,6 @@ function App() {
           <Search />
           <Divider />
           <Results />
-          <br />
         </div>
       </Container>
     </ThemeProvider>
