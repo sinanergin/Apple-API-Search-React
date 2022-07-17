@@ -1,16 +1,12 @@
+import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchActions } from '../helpers/slice';
 import Album from './Album';
 import Artist from './Artist';
 import Song from './Song';
-import Box from '@mui/system/Box';
-import Grid from '@mui/system/Unstable_Grid';
-import styled from '@mui/system/styled';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-export default function Results(params: any) {
-  const queryResults = useSelector((state: any) => state.items);
-  const lastItemNumber = useSelector((state: any) => state.lastItemNumber);
+function RecordsFounded(props: any) {
+  const { queryResults, lastItemNumber } = props;
   const dispatch = useDispatch();
 
   const handleLoadMore = (event: any) => {
@@ -19,7 +15,10 @@ export default function Results(params: any) {
 
   return (
     <>
-      <h1>this is result set</h1>
+      <Typography my={2} variant='h6' align='right'>
+        ({queryResults.length} records found.)
+      </Typography>
+
       {queryResults.slice(0, lastItemNumber).map((result: any) => {
         switch (result.wrapperType) {
           case 'artist':
@@ -28,11 +27,34 @@ export default function Results(params: any) {
             return <Album recordInfo={result} />;
           case 'track':
             return <Song recordInfo={result} />;
-          default:
-            return <h1>not found</h1>;
         }
       })}
       <button onClick={handleLoadMore}>Load More</button>
+    </>
+  );
+}
+
+function RecordsNotFounded() {
+  return (
+    <Typography my={10} variant='h3' align='center'>
+      No records found.
+    </Typography>
+  );
+}
+
+export default function Results(params: any) {
+  const queryResults = useSelector((state: any) => state.items);
+  const lastItemNumber = useSelector((state: any) => state.lastItemNumber);
+  return (
+    <>
+      {queryResults.length > 0 ? (
+        <RecordsFounded
+          queryResults={queryResults}
+          lastItemNumber={lastItemNumber}
+        />
+      ) : (
+        <RecordsNotFounded />
+      )}
     </>
   );
 }

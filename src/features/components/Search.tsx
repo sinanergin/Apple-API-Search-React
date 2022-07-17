@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
+import Sheet from '@mui/joy/Sheet';
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -25,37 +26,33 @@ export default function Search() {
   };
 
   return (
-    <Container component='main' maxWidth='lg' sx={{ mb: 4 }}>
-      <Typography component='h1' variant='h4' align='center'>
-        iTunes music library search
+    <Box sx={{ mt: 10, mb: 5 }}>
+      <Typography component='h1' variant='h2' align='center'>
+        iTunes music library
       </Typography>
 
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={8} md={8}>
-            <TextField
-              id='standard-search'
-              label='Please enter song, album, singer name... '
-              type='search'
-              variant='standard'
-              color='primary'
-              focused
-              name='queryValue'
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={4} md={4}>
-            <Button
-              type='submit'
-              variant='contained'
-              color='primary'
-              endIcon={<SearchTwoToneIcon />}
-            >
-              Search
-            </Button>
-          </Grid>
-        </Grid>
+        <Box sx={{ my: 8, display: 'flex', justifyContent: 'space-around' }}>
+          <TextField
+            id='outlined-search'
+            label='Please enter song, album, singer name...'
+            type='search'
+            focused
+            fullWidth
+            name='queryValue'
+          />
+          <Button
+            type='submit'
+            variant='contained'
+            size='large'
+            color='primary'
+            endIcon={<SearchTwoToneIcon />}
+            sx={{ mx: 2 }}
+          >
+            Search
+          </Button>
+        </Box>
       </form>
-    </Container>
+    </Box>
   );
 }
