@@ -27,15 +27,10 @@ export const fetchDataThunk = (keyword: string) => {
 
     try {
       const results = await fetchHandler();
+      dispatch(searchActions.reset(null));
       dispatch(searchActions.getAllItems(results));
     } catch (err) {
-      //   dispatch(
-      //     uiActions.showNotification({
-      //       open: true,
-      //       message: 'Sending Request Failed',
-      //       type: 'error',
-      //     })
-      //   );
+      dispatch(searchActions.reset(null));
     }
   };
 };

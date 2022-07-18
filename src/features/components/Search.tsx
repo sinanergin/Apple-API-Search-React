@@ -1,17 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { fetchDataThunk } from '../helpers/fetchDataThunk';
-
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
-import FormControl, { useFormControl } from '@mui/material/FormControl';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Sheet from '@mui/joy/Sheet';
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -21,7 +14,6 @@ export default function Search() {
     const data = new FormData(event.currentTarget);
     const queryValue: any = data.get('queryValue') && data.get('queryValue');
     const fetchFunction = await fetchDataThunk(queryValue);
-
     fetchFunction(dispatch);
   };
 
