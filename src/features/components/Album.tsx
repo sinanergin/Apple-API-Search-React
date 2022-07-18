@@ -7,9 +7,12 @@ import Typography from '@mui/material/Typography';
 export default function Album(props: any) {
   const { artistName, collectionName, primaryGenreName, artworkUrl100 } =
     props.recordInfo;
+  const { thisIsLastItem } = props;
 
   return (
-    <div data-search-item>
+    <>
+      {thisIsLastItem ? <div data-search-item /> : <div />}
+
       <Card
         variant='outlined'
         sx={{ display: 'flex', my: 2, borderRadius: 5, px: 3 }}
@@ -39,6 +42,6 @@ export default function Album(props: any) {
           </CardContent>
         </Box>
       </Card>
-    </div>
+    </>
   );
 }

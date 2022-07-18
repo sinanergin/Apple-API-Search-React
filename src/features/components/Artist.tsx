@@ -6,9 +6,11 @@ import { Box } from '@mui/system';
 
 export default function Artist(props: any) {
   const { artistName, artistLinkUrl, primaryGenreName } = props.recordInfo;
+  const { thisIsLastItem } = props;
 
   return (
-    <div data-search-item>
+    <>
+      {thisIsLastItem ? <div data-search-item /> : <div />}
       <Card
         variant='outlined'
         sx={{
@@ -37,6 +39,6 @@ export default function Artist(props: any) {
           </Link>
         </CardActions>
       </Card>
-    </div>
+    </>
   );
 }
